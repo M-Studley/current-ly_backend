@@ -1,5 +1,7 @@
 import os
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
 
 class Settings(BaseSettings):
     PG_URL: str
@@ -15,5 +17,6 @@ class Settings(BaseSettings):
         env_file=ENV_FILE,
         extra="ignore",
     )
+
 
 Config = Settings()

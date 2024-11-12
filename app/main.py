@@ -1,12 +1,14 @@
+import logging
+from contextlib import asynccontextmanager
+
 import uvicorn
+from fastapi import FastAPI
+
 from app.db.pg_connection import postgres_connection
 from app.db.redis_connection import redis_connection
 
-from fastapi import FastAPI
-from contextlib import asynccontextmanager
-import logging
-
 logging.basicConfig(level=logging.INFO)
+
 
 @asynccontextmanager
 async def life_span(app: FastAPI):
@@ -23,6 +25,7 @@ async def life_span(app: FastAPI):
         logging.info("Server has been stopped...")
         await postgres_connection.close_db()
         await redis_connection.disconnect()
+
 
 app = FastAPI(
     title="Current-ly API",
@@ -43,9 +46,11 @@ app = FastAPI(
     lifespan=life_span,
 )
 
+
 @app.get("/")
 async def root():
     return {"message": "Welcome to the Current-ly API!"}
+
 
 if __name__ == "__main__":
     uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
