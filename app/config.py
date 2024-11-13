@@ -6,6 +6,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     PG_URL: str
     REDIS_URL: str
+    TEST_PG_URL: str
+    TEST_REDIS_URL: str
     ENV_FILE: str
 
     if os.path.exists(".env"):

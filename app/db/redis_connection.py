@@ -1,10 +1,8 @@
 import json
 import logging
-from typing import Any
+from typing import Any, Optional
 
 from redis.asyncio import Redis
-
-from app.config import Config
 
 logging.basicConfig(level=logging.INFO)
 
@@ -13,10 +11,10 @@ class RedisConnection:
     def __init__(self):
         self.redis: Redis | None = None
 
-    async def connect(self):
+    async def connect(self, url) -> None:
         if self.redis is None:
             try:
-                self.redis = await Redis.from_url(Config.REDIS_URL)
+                self.redis = await Redis.from_url(url)
                 logging.info("Connected to Redis")
             except Exception as e:
                 logging.error(f"Failed to connect to Redis: {e}")

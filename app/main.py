@@ -6,6 +6,7 @@ from fastapi import FastAPI
 
 from app.db.pg_connection import postgres_connection
 from app.db.redis_connection import redis_connection
+from config import Config
 
 logging.basicConfig(level=logging.INFO)
 
@@ -16,7 +17,7 @@ async def life_span(app: FastAPI):
 
     try:
         await postgres_connection.init_db()
-        await redis_connection.connect()
+        await redis_connection.connect(Config.REDIS_URL)
         yield
     except Exception as e:
         logging.error(f"Error during startup: {e}")
