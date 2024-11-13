@@ -113,15 +113,20 @@ This project is licensed under the MIT License.
 ├── app/
 │ │
 │ ├── api/
+│ │ │
 │ │ └── routes/
+│ │
 │ ├── db/
 │ │ ├── __init__.py
 │ │ ├── pg_connection.py
 │ │ └── redis_connection.py
+│ │
 │ ├── models/
 │ │ ├── __init__.py
 │ │ └── base.py
+│ │
 │ ├── schemas/
+│ │
 │ ├── utils/
 │ │
 │ ├── __init__.py
@@ -137,5 +142,6 @@ This project is licensed under the MIT License.
 │
 ├── .env
 ├── .gitignore
+├── pytest.ini
 ├── README.md
 └── requirements.txt
