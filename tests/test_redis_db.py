@@ -1,4 +1,5 @@
 import pytest
+
 from app.db.redis_connection import redis_connection
 from config import Config
 

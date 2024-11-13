@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 @asynccontextmanager
-async def life_span(app: FastAPI):
+async def life_span(app: FastAPI):  # noqa
     logging.info("Server is starting...")
 
     try:
