@@ -110,10 +110,15 @@ This project is licensed under the MIT License.
 
 /current-ly/
 │
+├── alembic/
+│ ├── versions/
+│ │ └── ...
+│ ├── env.py
+│ ├── README
+│ └── script.py.mako
+│
 ├── app/
-│ │
 │ ├── api/
-│ │ │
 │ │ └── routes/
 │ │
 │ ├── db/
@@ -123,9 +128,21 @@ This project is licensed under the MIT License.
 │ │
 │ ├── models/
 │ │ ├── __init__.py
-│ │ └── base.py
+│ │ ├── base.py
+│ │ ├── location.py
+│ │ ├── notification.py
+│ │ ├── outage.py
+│ │ ├── outage_report.py
+│ │ └── user.py
 │ │
 │ ├── schemas/
+│ │ ├── __init__.py
+│ │ ├── base.py
+│ │ ├── location.py
+│ │ ├── notification.py
+│ │ ├── outage.py
+│ │ ├── outage_report.py
+│ │ └── user.py
 │ │
 │ ├── utils/
 │ │
