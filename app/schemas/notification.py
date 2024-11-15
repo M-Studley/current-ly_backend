@@ -11,7 +11,7 @@ class NotificationBase(BaseModel):
 
 class NotificationCreate(NotificationBase):
     user_id: int
-    outage_id: Optional[int]  # Link to outage if related
+    outage_id: Optional[int]
 
 
 class NotificationOut(NotificationBase):
@@ -21,4 +21,11 @@ class NotificationOut(NotificationBase):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+class NotificationUpdate(BaseModel):
+    message: Optional[str]
+    is_read: Optional[bool]
+
+    class Config:
+        from_attributes = True

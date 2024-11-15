@@ -21,4 +21,12 @@ class OutageReportOut(OutageReportBase):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+
+class OutageReportUpdate(BaseModel):
+    reported_status: Optional[str]
+    description: Optional[str]
+
+    class Config:
+        from_attributes = True
