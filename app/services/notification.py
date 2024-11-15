@@ -43,7 +43,7 @@ class NotificationService:
         if not notification:
             return None
 
-        for key, value in notification_data.dict(exclude_unset=True).items():
+        for key, value in notification_data.model_dump(exclude_unset=True).items():
             setattr(notification, key, value)
 
         await session.commit()

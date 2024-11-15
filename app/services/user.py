@@ -36,7 +36,7 @@ class UserService:
         result = await session.execute(select(User).where(User.id == user_id))
         user = result.scalar_one_or_none()
         if user:
-            for key, value in user_data.dict(exclude_unset=True).items():
+            for key, value in user_data.model_dump(exclude_unset=True).items():
                 setattr(user, key, value)
             await session.commit()
             await session.refresh(user)

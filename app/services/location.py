@@ -37,7 +37,7 @@ class LocationService:
         if not location:
             return None
 
-        for key, value in location_data.dict(exclude_unset=True).items():
+        for key, value in location_data.model_dump(exclude_unset=True).items():
             setattr(location, key, value)
 
         await session.commit()

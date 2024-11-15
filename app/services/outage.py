@@ -42,7 +42,7 @@ class OutageService:
         if not outage:
             return None
 
-        for key, value in outage_data.dict(exclude_unset=True).items():
+        for key, value in outage_data.model_dump(exclude_unset=True).items():
             setattr(outage, key, value)
 
         await session.commit()

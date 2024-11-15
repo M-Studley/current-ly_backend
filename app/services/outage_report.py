@@ -49,7 +49,7 @@ class OutageReportService:
         if not report:
             return None
 
-        for key, value in report_data.dict(exclude_unset=True).items():
+        for key, value in report_data.model_dump(exclude_unset=True).items():
             setattr(report, key, value)
 
         await session.commit()
