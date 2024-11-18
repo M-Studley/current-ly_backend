@@ -6,7 +6,9 @@ from app.models.base import Base
 
 class PostgresConnection:
     def __init__(self):
-        self.engine = create_async_engine(Config.PG_URL, echo=True)
+        db_url = Config.TEST_PG_URL if Config.ENV == "test" else Config.PG_URL
+
+        self.engine = create_async_engine(db_url, echo=True)
         self.Session = async_sessionmaker(
             bind=self.engine,
             class_=AsyncSession,

@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     TEST_PG_URL: str
     TEST_REDIS_URL: str
     ENV_FILE: str
+    ENV: str
 
     if os.path.exists(".env"):
         ENV_FILE = ".env"
